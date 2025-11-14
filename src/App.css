@@ -1,42 +1,182 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap');
+
+.welcome-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #EECC9D;
+    font-family: 'Gaegu', cursive;
+}
+
+.welcome-page h1 {
+    max-width: 500px;
+    text-align: center;
+    font-size: 3.5rem;
+}
+
+.welcome-page h2 {
+    max-width: 5000px;
+    text-align: center;
+    font-size: 2.0rem;
+
+    margin-bottom: 5rem;
+}
+
+.welcome-form label {
+  font-size: 2.0rem;
+  margin-bottom: 15px;
+  color: #EECC9D; /* Use a light color to match h1 */
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  max-width: 450px;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.welcome-page-background {  
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: auto;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.welcome-form select {
+  font-family: 'Gaegu', cursive;
+  font-size: 1.5rem;
+  font-weight: 700;
+  
+  /* --- CHANGED --- */
+  background-color: #D3733C;
+  color: #EECC9D; /* Light text */
+  border: 2px solid #EECC9D; /* Light border to show the shape */
+  box-shadow: none; /* Shadow looks odd on transparent */
+  /* --- END CHANGED --- */
+
+  border-radius: 25px;
+  padding: 12px 25px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Style the "yay!" button */
+.welcome-form button {
+  font-family: 'Gaegu', cursive;
+  font-size: 1.3rem;
+  font-weight: 700;
+  
+  /* --- CHANGED --- */
+  background-color: #D3733C;
+  color: #EECC9D; /* Light text */
+  border: 2px solid #EECC9D; /* Light border */
+  box-shadow: none; /* Remove shadow */
+  /* --- END CHANGED --- */
+  
+  border-radius: 25px;
+  padding: 10px 40px;
+  margin-top: 25px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.card {
-  padding: 2em;
+/* Add a little "pop" when you hover the button */
+.welcome-form button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-.read-the-docs {
-  color: #888;
+/* Style the button when it's disabled */
+.welcome-form button:disabled {
+  background-color: #D58E50; /* A faded color */
+  color: #D3733C;
+  cursor: not-allowed;
+}
+
+.dashboard-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+  min-height: 100vh;
+  color: #EECC9D; /* A dark brown for text */
+  
+  /* --- REPLACED background-color --- */
+  background-image: url('/dashboard.jpg'); /* Assumes this is the name */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* --- END OF CHANGE --- */
+}
+
+/* NOTE: Depending on your background, the text colors below
+  might need to be changed for readability! 
+*/
+.dashboard-page h2 {
+  font-size: 3rem;
+  color: #EECC9D; /* Keeping this, but you might change it */
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.dashboard-page p {
+  font-size: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+/* --- (CHANGED) GENERAL BUTTON STYLES --- */
+
+/* Shared styles */
+.button-primary,
+.button-secondary {
+  font-family: 'Gaegu', cursive;
+  font-size: 1.3rem;
+  font-weight: 700;
+  border-radius: 25px;
+  padding: 12px 40px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  max-width: 350px;
+}
+
+/* Primary Button (Matches Welcome Button) */
+.button-primary {
+  background-color: #D3733C;
+  color: #EECC9D;
+  border: 2px solid #EECC9D;
+  box-shadow: none;
+}
+
+.button-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Secondary Button (Outline Version) */
+.button-secondary {
+  background-color: #D3733C;
+  color: #EECC9D;
+  border: 2px solid #EECC9D; /* Main color from primary */
+}
+
+.button-secondary:hover {
+  transform: translateY(-2px);
+  /* Fills the button on hover for a nice effect */
+  background-color: #D3733C;
+  color: #EECC9D;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }

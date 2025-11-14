@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import { WelcomePage } from "./components/WelcomePage";
+import { DashboardPage } from "./components/DashboardPage";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [currentUser, setCurrentUser] = useState<string | null>(null);
 
-  return (
-    <>
+  type Page = "dashboard" | "form";
+  const [currentPage, setCurrentPage] = useState<Page>("dashboard");
+
+  const handleLogout = () => {
+    setCurrentUser(null);
+    setCurrentPage("dashboard");
+  };
+
+  if (currentUser === null) {
+    return <WelcomePage onLogin={setCurrentUser} />;
+  }
+
+  if (currentPage === "dashboard") {
+    return (
+      <DashboardPage
+        currentUser={currentUser}
+        onGoToForm={() => setCurrentPage("form")}
+        onLogout={handleLogout}
+      />
+    );
+  }
+
+  if (currentPage === "form") {
+    return (
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        Thanks Form
+        <button onClick={() => setCurrentPage("dashboard")}>
+          back to dashboard
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    );
+  }
+
+  return null;
 }
 
-export default App
+export default App;
