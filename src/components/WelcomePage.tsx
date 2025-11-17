@@ -40,7 +40,7 @@ export function WelcomePage({ onLogin }: WelcomePageProps) {
         </select>
 
         <button type="submit" disabled={!selectedName}>
-          yay let's write!
+          yay let's write
         </button>
       </form>
     </div>
